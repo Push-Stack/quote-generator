@@ -26,7 +26,7 @@ function removeLoadingSpinner() {
 }
 
 function setQuote(quote) {
-  if (quote.length > 120) {
+  if (quote.length > 90) {
     quoteTextContainer.classList.add("long-quote");
   } else {
     quoteTextContainer.classList.remove("long-quote");
