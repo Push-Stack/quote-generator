@@ -6,6 +6,9 @@ const twitterButton = document.getElementById("twitter-btn");
 const newQuoteButton = document.getElementById("newQuote-btn");
 const loadingContainer = document.getElementById("loading-container");
 
+const quoteTextDefaultColor = quoteText.style.color;
+const errorColor = "#DC143C";
+
 const apiURL =
   "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
 const proxyAPI = "https://cors-anywhere.herokuapp.com/";
@@ -28,6 +31,7 @@ function setQuote(quote) {
   } else {
     quoteTextContainer.classList.remove("long-quote");
   }
+
   quoteText.innerText = quote;
 }
 
@@ -36,6 +40,12 @@ function setAuthor(author) {
     authorText.innerText = "Unknown";
   } else {
     authorText.innerText = author;
+  }
+}
+
+function changeQuoteColorToDefault() {
+  if (quoteText.style.color === errorColor) {
+    quoteText.style.color = quoteTextDefaultColor;
   }
 }
 
@@ -52,6 +62,8 @@ async function getQuote() {
 
     errorCount = 0;
 
+    changeQuoteColorToDefault();
+
     removeLoadingSpinner();
   } catch (error) {
     if (errorCount <= 5) {
@@ -62,7 +74,7 @@ async function getQuote() {
 
       setQuote("An error occured while fetching Quotes from an API");
       setAuthor(null);
-      quoteText.style.color = "red";
+      quoteText.style.color = errorColor;
     }
   }
 }
