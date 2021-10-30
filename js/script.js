@@ -9,9 +9,10 @@ const loadingContainer = document.getElementById("loading-container");
 const quoteTextDefaultColor = quoteText.style.color;
 const errorColor = "#DC143C";
 
+//proxy
+const proxyAPI = "https://warm-temple-74859.herokuapp.com/";
 const apiURL =
   "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
-const proxyAPI = "https://cors-anywhere.herokuapp.com/";
 
 let errorCount = 0;
 
